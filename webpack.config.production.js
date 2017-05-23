@@ -46,6 +46,11 @@
 
 const webpack = require('webpack');
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const paths = {
+  node: './node_modules'
+};
 
 module.exports = {
   entry: './scripts/index',
@@ -69,7 +74,13 @@ module.exports = {
       compress: {
         warnings: false
       }
-    })
+    }),
+    new CopyWebpackPlugin([
+      { context: `${paths.node}/onsenui/css/`,
+        from: '**/*',
+        to: 'css'
+      }
+    ])
   ],
   module: {
     loaders: [

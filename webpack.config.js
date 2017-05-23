@@ -46,6 +46,14 @@
 
 const webpack = require('webpack');
 const path = require('path');
+require('style-loader');
+require('css-loader');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const paths = {
+  node: './node_modules'
+};
 
 module.exports = {
   entry: [
@@ -64,7 +72,15 @@ module.exports = {
   devtool: 'eval-source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new ExtractTextPlugin('styles.css'),
+    new CopyWebpackPlugin([
+        // {output}/file.txt
+      { context: `${paths.node}/onsenui/css/`,
+        from: '**/*',
+        to: 'css'
+      },
+    ])
   ],
   module: {
     loaders: [
@@ -72,6 +88,18 @@ module.exports = {
         test: /\.jsx?$/,
         loaders: ['babel'],
         include: path.join(__dirname, 'scripts')
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader'
+      },
+      {
+        test: /\.css$/,
+        loader: 'css-loader',
+        query: {
+          modules: true,
+          localIdentName: '[name]__[local]___[hash:base64:5]'
+        }
       }
     ]
   }
