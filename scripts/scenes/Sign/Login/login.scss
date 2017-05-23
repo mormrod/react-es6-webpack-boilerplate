@@ -1,0 +1,22 @@
+.login-container {
+  width: 100%;
+  margin-top: 50px;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
+
+.login-form {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 30px 15px 15px;
+  text-align: center;
+
+  ons-input {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  ons-icon {
+    font-size: 24px;
+  }
+}

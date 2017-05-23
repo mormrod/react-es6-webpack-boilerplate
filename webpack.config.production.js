@@ -79,7 +79,11 @@ module.exports = {
       { context: `${paths.node}/onsenui/css/`,
         from: '**/*',
         to: 'css'
-      }
+      },
+      { context: './scripts/images',
+        from: '**/*',
+        to: 'images'
+      },
     ])
   ],
   module: {

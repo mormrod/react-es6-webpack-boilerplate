@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import {
     HashRouter as Router,
     Route
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Login from './scenes/Sign/Login';
+import './app.scss';
 
 const Home = () => (
   <h2>Home</h2>

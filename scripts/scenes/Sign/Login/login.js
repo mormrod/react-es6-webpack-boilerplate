@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
-import { Page, Toolbar, Button } from 'react-onsenui';
+import { Page, Input, Button, Icon } from 'react-onsenui';
+import './login.scss';
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.renderToolbar = this.renderToolbar.bind(this);
-  }
-  renderToolbar() {
-    return (
-      <Toolbar>
-        <div className="center">Login</div>
-        <div className="right"><Button onClick={this.props.actions.loginClick}>Click</Button></div>
-      </Toolbar>
-    );
-  }
   render() {
     return (
-      <Page renderToolbar={this.renderToolbar}>
-        Login Page
+      <Page modifier="main">
+        <div className="login-container">
+          <div className="login-form">
+            <p><Icon icon="ion-ios-body" /><Icon icon="ion-ios-body" /><Icon icon="ion-ios-body" /><br />Sportz Connect</p>
+            <Input type="email" modifier="material" float placeholder="Email" value="" />
+            <Input type="password" modifier="material" float placeholder="Password" value="" />
+            <Button modifier="large" className="login-button">Log In</Button>
+            <Button modifier="quiet" className="forgot-password">Forgot password?</Button>
+          </div>
+        </div>
       </Page>
     );
   }

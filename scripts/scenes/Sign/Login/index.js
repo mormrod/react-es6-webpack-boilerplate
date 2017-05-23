@@ -3,12 +3,11 @@ import { bindActionCreators } from 'redux';
 import Login from './login';
 import { loginClick } from './actions';
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
+const mapStateToProps = (state) => (
+  {
     loginIsClicked: state.loginIsClicked
-  };
-};
+  }
+);
 
 const mapDispatchToProps = (dispatch) => (
   {
