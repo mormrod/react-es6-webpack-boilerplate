@@ -5,11 +5,8 @@ import {
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Login from './scenes/Sign/Login';
+import Home from './scenes/Home';
 import './app.scss';
-
-const Home = () => (
-  <h2>Home</h2>
-);
 
 export default class App extends Component {
   render() {
