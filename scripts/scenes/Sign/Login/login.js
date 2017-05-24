@@ -5,7 +5,7 @@ import './login.scss';
 class Login extends Component {
   render() {
     return (
-      <Page modifier="main">
+      <Page modifier="login">
         <div className="login-container">
           <div className="login-form">
             <p><Icon icon="ion-ios-body" /><Icon icon="ion-ios-body" /><Icon icon="ion-ios-body" /><br />Sportz Connect</p>

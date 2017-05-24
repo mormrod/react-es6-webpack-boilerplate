@@ -7,7 +7,7 @@ const renderToolbar = () => {
 };
 
 const Home = () => (
-  <Page modifier="main" renderToolbar={renderToolbar}>
+  <Page renderToolbar={renderToolbar}>
       Home
   </Page>
 );
