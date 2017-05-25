@@ -15,6 +15,7 @@ function getEntrySources(sources) {
 }
 
 module.exports = {
+  devtool: 'source-map',
   entry: {
     index: getEntrySources([
       './scripts/index'
@@ -22,7 +23,7 @@ module.exports = {
   },
   output: {
     publicPath: 'http://localhost:8080/',
-    filename: 'public/bundle.js'
+    filename: 'js/bundle.js'
   },
   plugins: [
     new CopyWebpackPlugin([
@@ -34,12 +35,13 @@ module.exports = {
     new SWPrecacheWebpackPlugin({
       cacheId: 'sportz-connect',
       filename: 'my-sw-file.js',
+      filepath: './scripts/my-sw-file.js',
       maximumFileSizeToCacheInBytes: 4194304,
-      staticFileGlobsIgnorePatterns: [/\.json/, /\.map/, /\.xml/],
+      staticFileGlobsIgnorePatterns: [/\.map/, /\.xml/],
       staticFileGlobs: [],
       runtimeCaching: [{
         handler: 'fastest',
-        urlPattern: /^http:\/\/(www\.)?localhost$/
+        urlPattern: /^(.*)$/
       }]
     })
   ],
@@ -55,8 +57,12 @@ module.exports = {
         loaders: ['style', 'css', 'sass']
       },
       {
-        test: /\.jpg$/,
+        test: /\.(jpg|jpeg|png)$/,
         loaders: ['file']
+      },
+      {
+        test: /\.json$/,
+        loaders: ['json']
       }
     ]
   },

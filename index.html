@@ -3,11 +3,16 @@
     <title>Sportz Connect</title>
     <link rel="stylesheet" href="css/onsenui.css">
     <link rel="stylesheet" href="css/onsen-css-components.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2196F3">
 </head>
 <body>
     <div id='root'></div>
-    <script src="http://localhost:8080/public/bundle.js"></script>
+    <div id="noJs"><p>Sorry, you need javascript enabled to use this app</p></div>
+    <script src="js/bundle.js"></script>
     <script>
+        document.getElementById('noJs').style.display = 'none';
+
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('./my-sw-file.js').then(function() {
                 console.log("Service Worker Registered");
