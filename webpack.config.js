@@ -5,44 +5,42 @@ const paths = {
   node: './node_modules'
 };
 
-function getEntrySources(sources) {
-  if (process.env.NODE_ENV !== 'production') {
-    sources.push('webpack-dev-server/client?http://localhost:8080');
-    sources.push('webpack/hot/only-dev-server');
-  }
-
-  return sources;
-}
-
 module.exports = {
   devtool: 'source-map',
   entry: {
-    index: getEntrySources([
-      './scripts/index'
-    ])
+    index: [
+      './scripts/index',
+      'webpack-dev-server/client?http://localhost:8080',
+      'webpack/hot/only-dev-server'
+    ]
   },
   output: {
     publicPath: 'http://localhost:8080/',
-    filename: 'js/bundle.js'
+    filename: 'dev/js/bundle.js'
   },
   plugins: [
     new CopyWebpackPlugin([
       { context: `${paths.node}/onsenui/css/`,
         from: '**/*',
-        to: 'css'
+        to: 'dev/css'
       }
     ]),
     new SWPrecacheWebpackPlugin({
       cacheId: 'sportz-connect',
-      filename: 'my-sw-file.js',
-      filepath: './scripts/my-sw-file.js',
+      filename: 'my-sw-file-cache.js',
+      minify: true,
+      directoryIndex: '/',
+      mergeStaticsConfig: true,
       maximumFileSizeToCacheInBytes: 4194304,
       staticFileGlobsIgnorePatterns: [/\.map/, /\.xml/],
       staticFileGlobs: [],
-      runtimeCaching: [{
-        handler: 'fastest',
-        urlPattern: /^(.*)$/
-      }]
+      runtimeCaching: [
+        {
+          handler: 'fastest',
+          urlPattern: /\/*/,
+        }
+      ],
+      verbose: true
     })
   ],
   module: {
@@ -70,5 +68,11 @@ module.exports = {
     headers: {
       'Access-Control-Allow-Origin': '*'
     }
-  }
+  },
+  externals: {
+    cheerio: 'window',
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true,
+  },
 };
