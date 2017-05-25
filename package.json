@@ -4,7 +4,7 @@
   "description": "Boilerplate for kick starting a React Project with ES6 (Babel) and Hot reloader using Webpack.",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --colors --hot",
+    "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --colors --hot --error-details",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack -p --progress --config webpack.config.production.js",
     "lint": "eslint --cache --ignore-path .gitignore --format=node_modules/eslint-formatter-pretty . *.js",
     "test": "mocha -w test/helpers/browser.js test/*.spec.js"
