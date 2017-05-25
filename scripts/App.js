@@ -6,7 +6,7 @@ import {
 import { Provider } from 'react-redux';
 import Login from './scenes/Sign/Login';
 import Home from './scenes/Home';
-import './app.scss';
+import './sass/app.scss';
 
 export default class App extends Component {
   render() {

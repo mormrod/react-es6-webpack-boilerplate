@@ -1,4 +1,5 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-dev-plugin');
 
 const paths = {
   node: './node_modules'
@@ -29,7 +30,18 @@ module.exports = {
         from: '**/*',
         to: 'css'
       }
-    ])
+    ]),
+    new SWPrecacheWebpackPlugin({
+      cacheId: 'sportz-connect',
+      filename: 'my-sw-file.js',
+      maximumFileSizeToCacheInBytes: 4194304,
+      staticFileGlobsIgnorePatterns: [/\.json/, /\.map/, /\.xml/],
+      staticFileGlobs: [],
+      runtimeCaching: [{
+        handler: 'fastest',
+        urlPattern: /^http:\/\/(www\.)?localhost$/
+      }]
+    })
   ],
   module: {
     loaders: [

@@ -1,0 +1,12 @@
+@import "variables";
+
+.page {
+  .page__content {
+    background-color: $content-background-colour !important;
+  }
+
+  .page__background {
+    background-size: cover;
+    background: url($page-background-image) no-repeat center !important;
+  }
+}

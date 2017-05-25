@@ -1,0 +1,8 @@
+$imgKey: random(2);
+
+$list: 'background1.jpg', 'background2.jpg';
+$nth: nth($list, $imgKey);
+
+$content-background-colour: rgba(0, 0, 0, 0.8);
+$content-colour: #FFFFFF;
+$page-background-image: '../images/#{$nth}';
